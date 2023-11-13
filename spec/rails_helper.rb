@@ -79,6 +79,7 @@ VCR.configure do |config|
   config.configure_rspec_metadata!
   config.filter_sensitive_data('edamam_key') { Rails.application.credentials.edamam[:key] }
   config.filter_sensitive_data('edamam_id') { Rails.application.credentials.edamam[:id] }
+  config.filter_sensitive_data('geoapify_key') { Rails.application.credentials.geoapify[:key] }
   #This could be useful if we are making a request that we don't need to make a casette for
   # config.allow_http_connections_when_no_cassette = true
 end
