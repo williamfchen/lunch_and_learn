@@ -6,7 +6,9 @@ class EdamamService
     json = JSON.parse(response.body, symbolize_names: true)
     json[:hits]
   end
-  
+
+  private
+
   def self.conn
     Faraday.new(url: 'https://api.edamam.com') do |f|
       f.headers['Content-Type'] = 'application/json'
