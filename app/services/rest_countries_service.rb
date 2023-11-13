@@ -5,6 +5,12 @@ class RestCountriesService
     json.sample[:name][:common]
   end
 
+  def self.get_capital(country)
+    response = conn.get("/v3.1/name/#{country}")
+    json = JSON.parse(response.body, symbolize_names: true)
+    json.first[:capitalInfo][:latlng]
+  end
+
   private
 
   def self.conn
