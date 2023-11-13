@@ -13,6 +13,7 @@ RSpec.describe 'Api::V1::TouristSite', type: :request do
       expect(json[:data].first[:attributes]).to have_key(:name)
       expect(json[:data].first[:attributes]).to have_key(:address)
       expect(json[:data].first[:attributes]).to have_key(:place_id)
+      expect(json[:data].first[:attributes].count).to eq(3)
     end
 
     it 'returns an empty array if no coordinates are found', :vcr do
