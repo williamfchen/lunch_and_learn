@@ -1,13 +1,15 @@
 class LearningResourceFacade
   def self.get_video(country)
-    video = YoutubeService.search(country)
-    Video.new(video, country)
+    video_data = YoutubeService.search(country)
+    return {} if video_data.nil? || video_data.empty?
+
+    Video.new(video_data, country)
   end
 
   def self.get_images(country)
-    images = UnsplashService.search(country)
-    images.map do |image|
-      Image.new(image)
-    end
+    images_data = UnsplashService.search(country)
+    return [] if images_data.nil? || images_data.empty?
+
+    images_data.map { |image_data| Image.new(image_data) }
   end
 end

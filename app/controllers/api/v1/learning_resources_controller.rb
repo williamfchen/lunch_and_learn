@@ -4,12 +4,18 @@ class Api::V1::LearningResourcesController < ApplicationController
     video = LearningResourceFacade.get_video(country)
     images = LearningResourceFacade.get_images(country)
 
-    learning_resource = {
-      country: country,
-      video: video,
-      images: images
+    response_body = {
+      data: {
+        id: nil,
+        type: "learning_resource",
+        attributes: {
+          country: country,
+          video: video,
+          images: images
+        }
+      }
     }
-    
-    render json: LearningResourceSerializer.new(learning_resource)
+
+    render json: response_body
   end
 end
