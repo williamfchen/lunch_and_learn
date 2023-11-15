@@ -64,7 +64,7 @@ RSpec.describe 'Favorites API', type: :request do
     end
 
     context 'when the api_key is invalid' do
-      before { get '/api/v1/favorites', params: { api_key: 'invalid_key' } }
+      before { get '/api/v1/favorites', params: { api_key: 'wrongwrongwrong' } }
 
       it 'returns status code 401' do
         expect(response).to have_http_status(401)
@@ -104,7 +104,7 @@ RSpec.describe 'Favorites API', type: :request do
     context 'when the api_key is invalid' do 
       it 'returns status code 401' do
         delete '/api/v1/favorites', 
-               params: { api_key: 'invalid_key', favorite_id: @favorite.id }.to_json,
+               params: { api_key: 'wrongwrongwrong', favorite_id: @favorite.id }.to_json,
                headers: { 'CONTENT_TYPE' => 'application/json' }
 
         expect(response).to have_http_status(401)
